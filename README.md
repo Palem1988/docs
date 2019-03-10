@@ -97,7 +97,7 @@ function createDocumentIndex(fields) {
       // BM25 ranking function constants:
       1.2,  // BM25 k1 constant, controls non-linear term frequency normalization (saturation).
       0.75, // BM25 b constant, controls to what degree document length normalizes tf values.
-      whitespaceTokenizer,
+      words,
       termFilter,
       // Set of removed documents, in this example we don't want to support removing documents from the index,
       // so we can ignore it by specifying this set as `undefined` value.
@@ -111,7 +111,7 @@ const docs = [
   {
     "id": "1",
     "content": "Lorem ipsum dolor",
-  };
+  },
   {
     "id": "2",
     "content": "Lorem ipsum",
@@ -167,7 +167,7 @@ function createDocumentIndex(fields) {
       }
     },
     // `removed` set should be specified as 7th argument in the `query()` function.
-    search: (q) => query(index, fieldBoostFactors, 1.2, 0.75, whitespaceTokenizer, termFilter, removed, q),
+    search: (q) => query(index, fieldBoostFactors, 1.2, 0.75, words, termFilter, removed, q),
   };
 }
 
@@ -175,7 +175,7 @@ const docs = [
   {
     "id": "1",
     "content": "Lorem ipsum dolor",
-  };
+  },
   {
     "id": "2",
     "content": "Lorem ipsum",
